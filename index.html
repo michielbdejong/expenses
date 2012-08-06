@@ -21,7 +21,8 @@
   }
 
   localStorage.clear();
-  remoteStorage.loadModule('money', 'rw');
+  remoteStorage.loadModule('money', 'rw');//first load all modules you need,
+  remoteStorage.displayWidget('widget');//after that, display the widget
   bulkDeclaration('michiel', '2011/09/09', {
     'full-time work allowance Michiel, 1 Nov 2010 - 15 Jan 2011':       2500.00,
     'full-time work allowance Michiel, 1 Mar 2011 - 8 Sep 2011':        6250.00,
@@ -319,6 +320,3 @@
   document.getElementById('balances').innerHTML=str;
 </script>
 <div id="widget"></div>
-<script>
-  remoteStorage.displayWidget('widget');
-</script>
