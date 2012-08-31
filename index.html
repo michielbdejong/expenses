@@ -189,7 +189,7 @@
     'living expenses 9 Mar - 9 May': 2000
   });
   reportDonation('received from nlnet', 2000, 'michiel', '2011/05/08');
-  bulkDeclaration('michiel', '2011/06/30', {
+  bulkDeclaration('michiel', '2012/06/30', {
     'received 100 cash from Jan': -100,
     '15/05/2012 received 500 from nlnet for commit talk': -500,
     '05/05/2012 rackspace':  27.78,
@@ -206,8 +206,16 @@
     '29/06/2012 zekur health insurance': 73.50,
     'living expenses 9 May - 9 July': 2000
   });
-  reportDonation('predicted payment from nlnet', 5000-2667.24, 'michiel', '2011/07/15');
+  reportDonation('payment from nlnet', 2300, 'michiel', '2011/07/25');
+  bulkDeclaration('michiel', '2012/08/31', {
+    'Finanzamt Unhosted e.V. costs': 112.60,
+    '2012/08/28 ARAG': 42.15,
+    'living expenses 9 July - 9 Sept': 2000,
+    '2012/07/08 Unive': 4.10,
+    '2012/07/27 zekur': 73.50
 
+
+  });
 
   // START JAN
   bulkDeclaration('jan', '2011/10/31', {
@@ -273,32 +281,23 @@
     'predicted declaration plane ticket Portland': 280,
     'predicted payment 15 July: krankenkasse May': 221.15
   });
-  reportDonation('predicted final payment from nlnet', 2667.24, 'jan', '2012/07/15');
+  reportDonation('final payment from nlnet', 2700, 'jan', '2012/07/25');
   declaration('hugo', '2012/06/30', 'internship June', 500);
-  declaration('hugo', '2012/05/04', 'co-up basic + 3 days', 20+3*12);
-  declaration('martin', '2012/05/04', 'co-up basic', 20);
+  declaration('hugo', '2012/06/04', 'co-up basic', 20);
+  declaration('hugo', '2012/07/04', 'co-up basic + 2 days', 20+2*12);
+  declaration('hugo', '2012/08/04', 'co-up basic', 20);
+  declaration('martin', '2012/06/04', 'co-up basic', 20);
 
   transfer('michiel', 'hugo', '2012/07/02', 556, 'EUR');
   transfer('michiel', 'martin', '2012/07/02', 20, 'EUR');
-  //rest of year 2 (after 15 july nlnet payment):
+  
   declaration('hugo', '2012/07/31', 'internship July', 500);
   declaration('hugo', '2012/08/31', 'internship August', 500);
-  transfer('michiel', 'hugo', '2012/08/01', 500, 'EUR');
-  transfer('michiel', 'hugo', '2012/09/01', 500, 'EUR');
-  reportDonation('predicted final payment from nlnet', 5000, 'michiel', '2012/09/01');
-  declaration('michiel', '2012/07/31', 'unemployment+health insurance July', 1070);
-  declaration('michiel', '2012/07/31', 'unemployment+health insurance August', 1070);
+  transfer('michiel', 'hugo', '2012/08/02', 520, 'EUR');
+  transfer('michiel', 'hugo', '2012/08/31', 750, 'EUR');
+  transfer('michiel', 'hugo', '2012/08/24', 5, 'EUR');//cash at dinner
+  reportDonation('final year 2 payment from nlnet', 5000, 'michiel', '2012/08/29');
 
-  //year 3:
-  declaration('michiel', '2012/09/09', '12 months Michiel', 12*(1500+70+45));//living expenses + health insurance + desk
-  declaration('niklas', '2012/09/09', '11 months Niklas', 11*(1500+220+250));//living expenses + health insurance + desk
-  reportDonation('nlnet year 3', 15000, 'michiel', '2012/09/09');
-  reportDonation('nlnet year 3', 15000, 'niklas', '2012/09/09');
-  declaration('michiel', '2012/09/09', 'stickers and other misc costs', 1019.83);
-  reportDonation('Wau Holland Stiftung', 1935.17+1019.83, 'michiel', '2012/09/09');
-  reportDonation('Wau Holland Stiftung', 6670, 'niklas', '2012/09/09');
-  transfer('Requesting from nlnet foundation', 'donations-received', '2012/09/09', 30000, 'EUR');
-  transfer('Requesting from Wau Holland Stiftung', 'donations-received', '2012/09/09', 1935.17+1019.83+6670, 'EUR');
 
   console.log('************************');
   function itoa(i) {
