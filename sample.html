@@ -23,14 +23,25 @@ Transactions:
   var str='';
   var balanceline = false;
   var thisreport;
-  var oldbalances;
   function startDay(date) {
     thisreport=date;
-    oldbalances=balances.slice(0,balances.length);//deep copy
     businesstoday=[];
   }
+  var remoteStorage = {
+    money: {
+      setDayBusiness: function(tab, year, month, day, transactions, endBalances) {
+        console.log([tab, year, month, day, transactions, endBalances]);
+      }
+    }
+  };
   function endDay() {
-    console.log(['#unhosted',thisreport,JSON.stringify(oldbalances),businesstoday,JSON.stringify(balances)]);
+    var endBalances = {};
+    for(var i=0; i<participants.length;i++) {
+      if(balances[i]!=0) {
+        endBalances[participants[i]]=balances[i];
+      }
+    }
+    remoteStorage.money.setDayBusiness('#unhosted',thisreport.substring(0,4), thisreport.substring(4,6), thisreport.substring(6,8),businesstoday, endBalances);
   }
   for(var i=transactions.length-1;i>=0;i--) {
     if(!thisreport) {
