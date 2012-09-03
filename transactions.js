@@ -108,7 +108,6 @@
     'paid 4,50 for sdw prints': 4.50,
     'paid sdw (some 130 euros, will check)': 130,
     'paid 40,15 for sending T-shirts (3rd batch)': 40.15,
-    'paid 185,75 in train tickets, of which 89,25 will be paid back through Jan, and 38,50 is a donation from Michiel to DS11': 89.25,
     '5-9-2011 28-9-2011 (Liquidado) Pago en GODADDY.COM EUROPE 02079792661': 19.73,
     '5-9-2011 28-9-2011 (Liquidado) Pago en GODADDY.COM EUROPE 02079792661': 12.43,
     '9-9-2011 28-9-2011 (Liquidado) Pago en T-MOBILE CZECH REPUBLIK BONN': 24.59,
@@ -201,13 +200,11 @@
   bulkDeclaration('jan', '2011/10/31', {
     //2000 + 151.73 stickers + 6.85 copyshop = 2158.58 (received 2200, owing 41.42)
     'worked two months': 2000,
-    'days co-up: 14,15 sept, 3 single tickets (paid through Berliner Bank)': 0,
-    '22.62 for jsconfEU party (paid through Berliner Bank)': 0,
     'stickers': 151.73,
-    '188 € train: 169 to webtechcon + 19 back (paid by them)': 0,
-    'of webtechcon money, 89.25 was for Michiel\'s travel costs': -89.25,
     '6,85 copyshop for 24 Unhost postcards': 6.85
   });
+  reportTransfer('michiel', 'jan', '2011/10/31', 'of webtechcon money, 89.25 was for Michiel\'s travel costs', 89.25, 'EUR');
+
   reportDonation('received from nlnet', 2200, 'jan', '2011/10/31', 'nlnet');
   bulkDeclaration('jan', '2011/12/31', {
     //: 2000 + 61.09 (7.85+7.40+6.30+4.54+35) = 2061.09 (received 2500, owed 41.42 last) owing 480.33
