@@ -1,6 +1,6 @@
 <html>
 <h2>OpenTabs</h2>
-<h3>#unhosted</h3>
+<h3>Tab: #unhosted</h3>
 Transactions:
 <table border="1" id="thetable">
 </table>
@@ -17,7 +17,7 @@ Transactions:
     balances.push(0);
   }
 
-  var str='<tr><td></td><td></td><td>'+participants.join('</td><td>')+'</td></tr>';
+  var str='';
   var balanceline = false;
   for(var i=transactions.length-1;i>=0;i--) {
     console.log(i);
@@ -45,5 +45,9 @@ Transactions:
     str = '<tr><td>'+transactions[i].date.substring(0,4)+'.'+transactions[i].date.substring(4,6)+'.'+transactions[i].date.substring(6,8)+'</td><td>'+transactions[i].comment
       +'</td><td>'+deltas.join('</td><td>')+'</td></tr>' + str;
   }
-  document.getElementById('thetable').innerHTML=str;
+  if(balanceline) {//will happen if cursor is highest occurring date
+    str = balanceline+str;
+  }
+  document.getElementById('thetable').innerHTML=
+    '<tr><td></td><td></td><td>'+participants.join('</td><td>')+'</td></tr>' + str;
 </script>
