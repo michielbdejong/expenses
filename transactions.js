@@ -281,4 +281,9 @@
   reportDonation('final year 2 payment from nlnet', 5000, 'michiel', '2012/08/29');
   reportDonation('from flattr Aug 2012', 74.48, 'michiel', '2012/08/31');
   reportDonation('from paypal Aug 2012', 90.84-74.48, 'michiel', '2012/08/31');
-
+  declaration('michiel', '2012/08/20', 'OpenTabs T-shirt design', 100);
+  declaration('michiel', '2012/09/01', 'remaining 12*170 eur for year 3', 2040);
+  reportTransfer('hugo', 'michiel', '2012/09/09', 'port to #peer tab', 67, 'EUR');
+  reportTransfer('jan', 'michiel', '2012/09/09', 'port to #peer tab', 32.76, 'EUR');
+  reportTransfer('pot', 'michiel', '2012/09/09', 'final donation', 65.99, 'EUR');
+  

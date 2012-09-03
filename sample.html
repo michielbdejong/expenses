@@ -7,6 +7,9 @@ Transactions:
 <script src="sample-calc.js"></script>
 <script src="transactions.js"></script>
 <script>
+  function round(x) {
+    return Math.floor(x*100+0.5)/100;
+  }
   transactions.sort(function(a, b) {
     return b.date-a.date;
   });
@@ -20,15 +23,13 @@ Transactions:
   var str='';
   var balanceline = false;
   for(var i=transactions.length-1;i>=0;i--) {
-    console.log(i);
-    //break;
     var deltas=[];
     for(var j=0;j<participants.length;j++) {
       if(participants[j]==transactions[i].from) {
-        balances[j]+=transactions[i].amount;
+        balances[j]=round(balances[j]+transactions[i].amount);
         deltas.push(transactions[i].amount);
       } else if(participants[j]==transactions[i].to) {
-        balances[j]-=transactions[i].amount;
+        balances[j]=round(balances[j]-transactions[i].amount);
         deltas.push(-transactions[i].amount);
       } else {
         deltas.push(0);
