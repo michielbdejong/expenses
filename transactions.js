@@ -214,11 +214,11 @@
     'stamps for 3 more shirts (November 10)': 7.85,
     '(1.80+2.80+2.80) in local tickets to get to HamburgJS, to friend and back (~90 in DB tickets paid by HamburgJS, November 21)': 7.40,
     'day pass to get to Köpenick youth meeting (Facebook presentation, 100 € payment will be donated to Unhosted e. V., November 22)': 6.30,
-    'received donation for unhosted from Koepenick': -100,
     'packages and stamps for sending more shirts (December 5)': 4.54,
     '28C3 day pass to give a lightning talk (December 30)': 35,
     'worked two months': 2000
   });
+  reportDonation('received from Koepenick for be-safe-online workshop', 100, 'jan', '2011/12/31', 'other');
   reportDonation('received from nlnet', 2500, 'jan', '2012/02/29', 'nlnet');
   bulkDeclaration('jan', '2012/02/29', {
     'health insurance, 215.26*4 for September–December, 221.15 after 2012 raise for January (February 15)': 1082.19,
