@@ -25,5 +25,5 @@ var transactions = [];
     reportTransfer(from, to, date, 'transfer', euros, 'EUR');
   }
   function reportDonation(comment, euros, acceptor, date) {
-    reportTransfer('pot', acceptor, date, 'donation', euros, 'EUR');
+    reportTransfer('pot', acceptor, date, comment, euros, 'EUR');
   }
