@@ -166,7 +166,6 @@
   });
   reportDonation('received from nlnet', 2000, 'michiel', '2011/05/08');
   bulkDeclaration('michiel', '2012/06/30', {
-    'received 100 cash from Jan': -100,
     '15/05/2012 received 500 from nlnet for commit talk': -500,
     '05/05/2012 rackspace':  27.78,
     '08/05/2012 international health insurance':  4.10,
@@ -246,7 +245,6 @@
   });
   reportDonation('received from nlnet', 3000, 'jan', '2012/06/15');
   bulkDeclaration('jan', '2012/06/30', {
-    'gave 100 cash to Michiel': 100,
     'health insurance for April (May 15)': 221.15,
     'health insurance for May (June 15)': 221.15,
     '20 for 3 days co.up coworking space (June 5–7)': 20,
@@ -262,6 +260,7 @@
     'predicted declaration plane ticket Portland': 280,
     'predicted payment 15 July: krankenkasse May': 221.15
   });
+  transfer('jan', 'michiel', '2012/06/30', 100, 'EUR');//cash at 5hacks
   reportDonation('final payment from nlnet', 2700, 'jan', '2012/07/25');
   declaration('hugo', '2012/06/30', 'internship June', 500);
   declaration('hugo', '2012/06/04', 'co-up basic', 20);
