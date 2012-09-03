@@ -5,16 +5,16 @@
     'office desk Michiel     co-up, april, 12-day flex':                  95.00,
     'office desk Michiel     betahaus, july, at team desk + coffee':     158.33
   });
-  reportDonation('Donation by Michiel', 6000, 'michiel', '2011/09/09');
-  reportDonation('Received from Crisp for workshop', 540, 'michiel', '2011/09/09');
-  reportDonation('Donations accepted in cash by Michiel', 40, 'michiel', '2011/09/09');
+  reportDonation('Donation by Michiel', 6000, 'michiel', '2011/09/09', 'michiel');
+  reportDonation('Received from Crisp for workshop', 540, 'michiel', '2011/09/09', 'other');
+  reportDonation('Donations accepted in cash by Michiel', 40, 'michiel', '2011/09/09', 'other');
   
   bulkDeclaration('javi', '2011/09/09', {
     'office desk Javier      co-up, april, 12-day flex':                  95.00,
     'full-time work allowance Javier, 15 Mar 2011 - 31 May 2011':       2500.00,
     'reserved for Krankenkasse Javier, 15 Mar 2011 - 31 May 2011':      375.00
   });
-  reportDonation('Donation by Javier', 2970, 'javi', '2011/09/09');
+  reportDonation('Donation by Javier', 2970, 'javi', '2011/09/09', 'javi');
   
   bulkDeclaration('michiel', '2011/09/09', {
     'DNR+Host \'unhosted.org\' godaddy            (11 sep)': 12.08,
@@ -87,7 +87,7 @@
     'reject.js                                            (13 eur, will be paid through berliner bank)': 13,
     'jsconfeu-fun                                         (20 eur, will be paid through berliner bank)': 20,
   });
-  reportDonation('paid directly from Berliner Bank account', 33, 'berlinerbank', '2011/09/09');
+  reportDonation('paid directly from Berliner Bank account', 33, 'berlinerbank', '2011/09/09', 'e.V.');
   
   bulkDeclaration('michiel', '2011/09/09', {
     'notary                  Seeger&Seeger          31.75         (apr)': 31.75,
@@ -117,11 +117,11 @@
     'flyeralarm stickers pay-on-delivery': 68.71,
     'worked two months 9 sept - 9 nov': 2000
   });
-  reportDonation('received 4042 euros from paypal to his personal bank account (comdirect)', 4042, 'michiel', '2011/10/31');
-  reportDonation('received from nlnet', 2800, 'michiel', '2011/10/31');
+  reportDonation('received 4042 euros from paypal to his personal bank account (comdirect)', 4042, 'michiel', '2011/10/31', 'e.V.');
+  reportDonation('received from nlnet', 2800, 'michiel', '2011/10/31', 'nlnet');
   
-  transfer('donations-needed', 'unhosted-reserved', '2012/09/09', 937, 'EUR', 'reservation for Krankenkasse Michiel, 1 Mar 2011 - 8 Sep 2011');
-  transfer('unhosted-reserved', 'donations-needed', '2012/10/09', 937, 'EUR', 'reservation for Krankenkasse Michiel, 1 Mar 2011 - 8 Sep 2011');
+  transfer('pot', 'unhosted-reserved', '2011/09/09', 937, 'EUR', 'reservation for Krankenkasse Michiel, 1 Mar 2011 - 8 Sep 2011');
+  transfer('unhosted-reserved', 'pot', '2011/10/09', 937, 'EUR', 'reservation for Krankenkasse Michiel, 1 Mar 2011 - 8 Sep 2011');
   
   bulkDeclaration('michiel', '2011/12/31', {
     //'original summary (presumably the 1 Nov start balance?)': 3125.20,
@@ -133,7 +133,7 @@
     'and also since then: rackspace 2 dec': 23.91,
     'unemployment 9 nov - 9 jan': 2000
   });
-  reportDonation('received from nlnet', 2500, 'michiel', '2011/12/31');
+  reportDonation('received from nlnet', 2500, 'michiel', '2011/12/31', 'nlnet');
   bulkDeclaration('michiel', '2011/02/29', {
     //'was owed': 2476.56,
     'received from govcert': -81.61,
@@ -147,7 +147,7 @@
     'train-> deventer': 15.80,
     'train deventer -> den haag': 15.20+2.00
   });
-  reportDonation('received from nlnet', 2000, 'michiel', '2011/03/03');
+  reportDonation('received from nlnet', 2000, 'michiel', '2011/03/03', 'nlnet');
   bulkDeclaration('michiel', '2011/04/30', {
     'received from paypal 740 euros (17 Feb)': -740,
     'received from paypal: 690 euros (8 March)': -690,
@@ -164,7 +164,7 @@
     '28.04.2012 paid co-up 28 april .. 27 may':95,
     'living expenses 9 Mar - 9 May': 2000
   });
-  reportDonation('received from nlnet', 2000, 'michiel', '2011/05/08');
+  reportDonation('received from nlnet', 2000, 'michiel', '2011/05/08', 'nlnet');
   bulkDeclaration('michiel', '2012/06/30', {
     '15/05/2012 received 500 from nlnet for commit talk': -500,
     '05/05/2012 rackspace':  27.78,
@@ -181,7 +181,7 @@
     '29/06/2012 zekur health insurance': 73.50,
     'living expenses 9 May - 9 July': 2000
   });
-  reportDonation('payment from nlnet', 2300, 'michiel', '2011/07/25');
+  reportDonation('payment from nlnet', 2300, 'michiel', '2011/07/25', 'nlnet');
   bulkDeclaration('michiel', '2012/08/31', {
     'Finanzamt Unhosted e.V. costs': 112.60,
     '2012/08/28 ARAG': 42.15,
@@ -208,7 +208,7 @@
     'of webtechcon money, 89.25 was for Michiel\'s travel costs': -89.25,
     '6,85 copyshop for 24 Unhost postcards': 6.85
   });
-  reportDonation('received from nlnet', 2200, 'jan', '2011/10/31');
+  reportDonation('received from nlnet', 2200, 'jan', '2011/10/31', 'nlnet');
   bulkDeclaration('jan', '2011/12/31', {
     //: 2000 + 61.09 (7.85+7.40+6.30+4.54+35) = 2061.09 (received 2500, owed 41.42 last) owing 480.33
     'stamps for 3 more shirts (November 10)': 7.85,
@@ -219,14 +219,14 @@
     '28C3 day pass to give a lightning talk (December 30)': 35,
     'worked two months': 2000
   });
-  reportDonation('received from nlnet', 2500, 'jan', '2012/02/29');
+  reportDonation('received from nlnet', 2500, 'jan', '2012/02/29', 'nlnet');
   bulkDeclaration('jan', '2012/02/29', {
     'health insurance, 215.26*4 for September–December, 221.15 after 2012 raise for January (February 15)': 1082.19,
     'health insurance abroad': 11,
     'liability insurance': 69.59,
     'worked two months': 2000
   });
-  reportDonation('received from nlnet', 3000, 'jan', '2012/02/29');
+  reportDonation('received from nlnet', 3000, 'jan', '2012/02/29', 'nlnet');
   bulkDeclaration('jan', '2012/04/30', {
     'sending two shirts (March 7)': 4.90,
     'bus tickets (5.00+2.70) getting into Amsterdam (hitchhiked there, March 7)': 7.70,
@@ -243,7 +243,7 @@
     '221.15 health insurance for March (April 16)': 221.15,
     'worked two months': 2000
   });
-  reportDonation('received from nlnet', 3000, 'jan', '2012/06/15');
+  reportDonation('received from nlnet', 3000, 'jan', '2012/06/15', 'nlnet');
   bulkDeclaration('jan', '2012/06/30', {
     'health insurance for April (May 15)': 221.15,
     'health insurance for May (June 15)': 221.15,
@@ -261,7 +261,7 @@
     'predicted payment 15 July: krankenkasse May': 221.15
   });
   transfer('jan', 'michiel', '2012/06/30', 100, 'EUR');//cash at 5hacks
-  reportDonation('final payment from nlnet', 2700, 'jan', '2012/07/25');
+  reportDonation('final payment from nlnet', 2700, 'jan', '2012/07/25', 'nlnet');
   declaration('hugo', '2012/06/30', 'internship June', 500);
   declaration('hugo', '2012/06/04', 'co-up basic', 20);
   declaration('hugo', '2012/07/04', 'co-up basic + 2 days', 20+2*12);
@@ -277,12 +277,12 @@
   transfer('michiel', 'hugo', '2012/08/02', 520, 'EUR');
   transfer('michiel', 'hugo', '2012/08/31', 750, 'EUR');
   transfer('michiel', 'hugo', '2012/08/24', 5, 'EUR');//cash at dinner
-  reportDonation('final year 2 payment from nlnet', 5000, 'michiel', '2012/08/29');
-  reportDonation('from flattr Aug 2012', 74.48, 'michiel', '2012/08/31');
-  reportDonation('from paypal Aug 2012', 90.84-74.48, 'michiel', '2012/08/31');
+  reportDonation('final year 2 payment from nlnet', 5000, 'michiel', '2012/08/29', 'nlnet');
+  reportDonation('from flattr Aug 2012', 74.48, 'michiel', '2012/08/31', 'e.V.');
+  reportDonation('from paypal Aug 2012', 90.84-74.48, 'michiel', '2012/08/31', 'e.V.');
   declaration('michiel', '2012/08/20', 'OpenTabs T-shirt design', 100);
   declaration('michiel', '2012/09/01', 'remaining 12*170 eur for year 3', 2040);
   reportTransfer('hugo', 'michiel', '2012/09/09', 'port to #peer tab', 67, 'EUR');
   reportTransfer('jan', 'michiel', '2012/09/09', 'port to #peer tab', 32.76, 'EUR');
-  reportTransfer('pot', 'michiel', '2012/09/09', 'final donation', 65.99, 'EUR');
+  reportDonation('final donation', 65.99, 'michiel', '2012/09/09', 'michiel');
   

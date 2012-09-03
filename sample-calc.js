@@ -24,6 +24,7 @@ var transactions = [];
   function transfer(from, to, date, euros) {
     reportTransfer(from, to, date, 'transfer', euros, 'EUR');
   }
-  function reportDonation(comment, euros, acceptor, date) {
-    reportTransfer('pot', acceptor, date, comment, euros, 'EUR');
+  function reportDonation(comment, euros, acceptor, date, donator) {
+    reportTransfer(donator, acceptor, date, comment, euros, 'EUR');
+    reportTransfer('pot', donator, date, 'Thank you for your donation', euros, 'EUR');//donations don't establish credit, they are immediately paid off by saying thank you
   }
