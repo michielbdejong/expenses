@@ -1,17 +1,15 @@
-var transactions = {};
+var transactions = [];
   function formatDate(date) {
     return date.split('/').join('');
   }
   function reportTransfer(from, to, date, comment, amount, currency) {
-    if(!transactions[formatDate(date)]) {
-      transactions[formatDate(date)]=[];
-    }
-    transactions[formatDate(date)].push({
+    transactions.push({
       from: from,
       to: to,
       comment: comment,
       amount: amount,
-      currency: currency
+      currency: currency,
+      date: formatDate(date)
     });
   }
 
