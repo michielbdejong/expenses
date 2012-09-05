@@ -24,7 +24,10 @@ Inside money.js we change 'changeMe' to 'money' (twice). Then index.html of our 
     </script>
 
 </p><p>
-Now we need to add methods to our module. We would like to store transactions one-by-one, and retrieve them per day. We also want to be able to retrieve all balances for the tab for a given date (balances at the end of the day after all transactions are done). So let's start by creating fake versions of our methods, that only log their arguments to the console: <a href="3/">fake methods</a>.
+Now we need to add methods to our module. We would like to store transactions per day, so let's start by creating fake version of a 'setDayBusiness' method, that only log their arguments to the console: <a href="3/">fake methods</a>. Our app will call it from its endDay() method with this line:
+
+    remoteStorage.money.setDayBusiness('#unhosted',thisreport.substring(0,4), thisreport.substring(4,6), thisreport.substring(6,8),businesstoday, endBalances);
+
 </p> <p>
 The last step is to make the methods actually store and retrieve data through the baseClient. For this it is important to understand that the storage has a tree structure, like directories on a file system. We can at any point ask for the children of a certain node, so that is what we can use to retrieve all transactions of a given date. For the balances we need to be more careful, it would be too much work to calculate those on the fly, so let's cache them together with the per-day transaction lists. So when storing a transaction we update the end-balance for that day. If there were no transactions yet on that day, we take the closest previous end balance as the start balance for the day. To avoid the directory listings getting too long after many years of use, we use year/month/day/balance/X for the balances and year/month/day/transaction/Y for the transactions: <a href="4/">money module</a>.
 </p> <p>
