@@ -9,27 +9,33 @@ You can open this app in a browser from a static web server, and it will show an
 </p> <p>
 Now the first thing we need to do is decide which information we want to store. In this case it's debt/credit transactions between peers. Let's see if any of the existing modules would be able to store this information. Contacts and pictures obviously not. Tasks, calendar or documents could be, but still a bit off-topic. Root is only for sysadmin access to a user's storage, not for day-to-day use, so that's definitely not the right module to use. That means that we probably have to create a new module.
 </p> <p>
-So the next step is to go to the IRC channel, #unhosted on freenode, and propose what kind of data we want to store (money transactions), and ask if people agree that we need a new module for this. Allow up to 24 hours for people to reply to your question, so don't leave the channel immediately after asking, just hang around in the channel for the rest of the day, and/or come back the next day to see if any messages were left for you (you can leave a message in our irc channel by typing !memo <nick> <msg>).
+So the next step is to go to the IRC channel, #unhosted on freenode, and propose what kind of data we want to store (money transactions), and ask if people agree that we need a new module for this. Allow up to 24 hours for people to reply to your question, so don't leave the channel immediately after asking, just hang around in the channel for the rest of the day, and/or come back the next day to see if any messages were left for you (you can leave a message in our irc channel by typing !memo &lt;nick> &lt;msg>).
 </p> <p>
 In the mean time we start developing our money module. First we copy <a href="http://remotestoragejs.com/src/modules/skel-old.js">http://remotestoragejs.com/src/modules/skel-old.js</a> into our app repo and rename it money.js (note this is still the old way of doing it, the build process will probably be slightly different soon because of AMD). Then we make the app load the module. <a href="2/">adding a new module</a>.
 </p><p>
 Inside money.js we change 'changeMe' to 'money' (twice). Then index.html of our app we add the following lines at the top to include and load remoteStorage.money:
 
-    <div id="rs-widget"></div>
-    <script src="http://remotestoragejs.com/build/0.7.0-dp1/remoteStorage-debug.js"></script>
-    <script src="money.js"></script>
-    <script>
-      remoteStorage.loadModule('money', 'rw');
-      remoteStorage.displayWidget('rs-widget');
-    </script>
+<code><p>
+    &lt;div id="rs-widget">&lt;/div><br>
+    &lt;script src="http://remotestoragejs.com/build/0.7.0-dp1/remoteStorage-debug.js">&lt;/script><br>
+    &lt;script src="money.js">&lt;/script><br>
+    &lt;script><br>
+      remoteStorage.loadModule('money', 'rw');<br>
+      remoteStorage.displayWidget('rs-widget');<br>
+    &lt;/script>
+</p></code>
 
 </p><p>
 Now we need to add methods to our module. We would like to store transactions per day, so let's start by creating fake version of a 'setDayBusiness' method, that only log their arguments to the console: <a href="3/">fake methods</a>. Our app will call it from its endDay() method with this line:
 
-    remoteStorage.money.setDayBusiness('#unhosted',thisreport.substring(0,4), thisreport.substring(4,6), thisreport.substring(6,8),businesstoday, endBalances);
+</p><p>
+<code>
+    remoteStorage.money.setDayBusiness('#unhosted', thisreport.substring(0,4), thisreport.substring(4,6), thisreport.substring(6,8), businesstoday, endBalances);
+</code>
+</p><p>
 
 </p> <p>
-The last step is to make the methods actually store and retrieve data through the baseClient. For this it is important to understand that the storage has a tree structure, like directories on a file system. We can at any point ask for the children of a certain node, so that is what we can use to retrieve all transactions of a given date. For the balances we need to be more careful, it would be too much work to calculate those on the fly, so let's cache them together with the per-day transaction lists. So when storing a transaction we update the end-balance for that day. If there were no transactions yet on that day, we take the closest previous end balance as the start balance for the day. To avoid the directory listings getting too long after many years of use, we use year/month/day/balance/X for the balances and year/month/day/transaction/Y for the transactions: <a href="4/">money module</a>.
+The last step is to make the methods actually store and retrieve data through the baseClient. For this it is important to understand that the storage has a tree structure, like directories on a file system. We can at any point ask for the children of a certain node, so that is what we can use to retrieve all transactions of a given date. For the balances we need to be more careful, it would be too much work to calculate those on the fly, so let's cache them together with the per-day transaction lists. So when storing a transaction we update the end-balance for that day. If there were no transactions yet on that day, we take the closest previous end balance as the start balance for the day. To avoid the directory listings getting too long after many years of use, we use <code>year/month/day/balance/X</code> for the balances and <code>year/month/day/transaction/Y</code> for the transactions: <a href="4/">money module</a>.
 </p> <p>
 Now we would go back to the irc channel, see if anyone reacted to our suggestion to create a new 'money' module (maybe it's deemed better to merge it with some other module, in which case we could do that). Otherwise, we send a pull-request to get our new money module included in the main distribution. That's it, we're done now. Warning: RemoteStorageJs is still very young and it's in developer preview (pre-alpha). So expect the unexpected.
 </p>
