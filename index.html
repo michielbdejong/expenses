@@ -1,4 +1,12 @@
 <html><head></head>
+<div id="rs-widget"></div>
+<script src="http://remotestoragejs.com/build/0.7.0-dp1/remoteStorage-debug.js"></script>
+<script src="money.js"></script>
+<script>
+  remoteStorage.loadModule('money', 'rw');
+  remoteStorage.displayWidget('rs-widget');
+</script>
+
 <h2>OpenTabs <a href="making/">How I added remoteStorage to this</a></h2>
 <h3>Tab: #unhosted</h3>
 Transactions:
@@ -27,13 +35,6 @@ Transactions:
     thisreport=date;
     businesstoday=[];
   }
-  var remoteStorage = {
-    money: {
-      setDayBusiness: function(tab, year, month, day, transactions, endBalances) {
-        console.log([tab, year, month, day, transactions, endBalances]);
-      }
-    }
-  };
   function endDay() {
     var endBalances = {};
     for(var i=0; i<participants.length;i++) {
