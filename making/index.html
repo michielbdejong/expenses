@@ -1,0 +1,22 @@
+<html> <div style="width:30em;margin:10em auto">
+<h1>How to add remoteStorage to an unhosted web app</h1>
+<p>
+Suppose we have an unhosted web app, that's to say, a web app that has only static content on the server-side, and whose functionality only arises on the client-side.
+</p> <p>
+I'm going to take our expenses app as an example. This is the spreadsheet with which we have kept track of the central donations pot of the unhosted project for the last two years. It could have been a spreadsheet, but since we're so in love with javascript, we just wrote it as a custom javascript program.
+</p> <p>
+You can open this app in a browser from a static web server, and it will show an overview of all the relevant transactions, with date, comment, sender, recipient, amount and currency, and then it calculates and displays an end balance for all participants: <a href="1/">our example unhosted web app, still without remoteStorage</a>.
+</p> <p>
+Now the first thing we need to do is decide which information we want to store. In this case it's debt/credit transactions between peers. Let's see if any of the existing modules would be able to store this information. Contacts and pictures obviously not. Tasks, calendar or documents could be, but still a bit off-topic. Root is only for sysadmin access to a user's storage, not for day-to-day use, so that's definitely not the right module to use. That means that we probably have to create a new module.
+</p> <p>
+So the next step is to go to the IRC channel, #unhosted on freenode, and propose what kind of data we want to store (money transactions), and ask if people agree that we need a new module for this. Allow up to 24 hours for people to reply to your question, so don't leave the channel immediately after asking, just hang around in the channel for the rest of the day, and/or come back the next day to see if any messages were left for you (you can leave a message in our irc channel by typing !memo <nick> <msg>).
+</p> <p>
+In the mean time we start developing our money module. First we copy skel.js into our app repo and rename it money.js. Then we make the app load the module. <a href="2/">adding a new module</a>.
+</p> <p>
+Now we need to add methods to our module. We would like to store transactions one-by-one, and retrieve them per day. We also want to be able to retrieve all balances for the tab for a given date (balances at the end of the day after all transactions are done). So let's start by creating fake versions of our methods, that only log their arguments to the console: <a href="3/">fake methods</a>.
+</p> <p>
+The last step is to make the methods actually store and retrieve data through the baseClient. For this it is important to understand that the storage has a tree structure, like directories on a file system. We can at any point ask for the children of a certain node, so that is what we can use to retrieve all transactions of a given date. For the balances we need to be more careful, it would be too much work to calculate those on the fly, so let's cache them together with the per-day transaction lists. So when storing a transaction we update the end-balance for that day. If there were no transactions yet on that day, we take the closest previous end balance as the start balance for the day. To avoid the directory listings getting too long after many years of use, we use year/month/day/balance/X for the balances and year/month/day/transaction/Y for the transactions: <a href="4/">money module</a>.
+</p> <p>
+Now we would go back to the irc channel, see if anyone reacted to our suggestion to create a new 'money' module (maybe it's deemed better to merge it with some other module, in which case we could do that). Otherwise, we send a pull-request to get our new money module included in the main distribution. That's it, we're done now. Warning: RemoteStorageJs is still very young and it's in developer preview (pre-alpha). So expect the unexpected.
+</p>
+</div></html>
