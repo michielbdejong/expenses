@@ -1,0 +1,85 @@
+<html>
+<div id="rs-widget"></div>
+<script src="http://remotestoragejs.com/build/0.7.0-dp1/remoteStorage-debug.js"></script>
+<script src="money.js"></script>
+<script>
+  remoteStorage.loadModule('money', 'rw');
+  remoteStorage.displayWidget('rs-widget');
+</script>
+
+<h2>OpenTabs</h2>
+<h3>Tab: #unhosted</h3>
+Transactions:
+<table border="1" id="thetable">
+</table>
+<script src="calc.js"></script>
+<script src="transactions.js"></script>
+<script>
+  function round(x) {
+    return Math.floor(x*100+0.5)/100;
+  }
+  transactions.sort(function(a, b) {
+    return b.date-a.date;
+  });
+  var participants = ['michiel', 'javi', 'jan', 'hugo', 'martin', 'e.V.', 'nlnet', 'unhosted-reserved', 'berlinerbank', 'other', 'pot'];
+  var cursor=location.hash.substring(1);
+  var balances = [];
+  for(var i=0;i<participants.length;i++) {
+    balances.push(0);
+  }
+
+  var str='';
+  var balanceline = false;
+  var thisreport;
+  function startDay(date) {
+    thisreport=date;
+    businesstoday=[];
+  }
+  function endDay() {
+    var endBalances = {};
+    for(var i=0; i<participants.length;i++) {
+      if(balances[i]!=0) {
+        endBalances[participants[i]]=balances[i];
+      }
+    }
+    remoteStorage.money.setDayBusiness('#unhosted',thisreport.substring(0,4), thisreport.substring(4,6), thisreport.substring(6,8),businesstoday, endBalances);
+  }
+  for(var i=transactions.length-1;i>=0;i--) {
+    if(!thisreport) {
+      startDay(transactions[i].date, balances);
+    } else if(transactions[i].date!=thisreport) {
+      endDay(balances);
+      startDay(transactions[i].date, balances);
+    }
+    businesstoday.push(transactions[i]);
+    var deltas=[];
+    for(var j=0;j<participants.length;j++) {
+      var thisDelta=0;
+      if(participants[j]==transactions[i].from) {
+        balances[j]=round(balances[j]+transactions[i].amount);
+        thisDelta+=transactions[i].amount;
+      }
+      if(participants[j]==transactions[i].to) {
+        balances[j]=round(balances[j]-transactions[i].amount);
+        thisDelta-=transactions[i].amount;
+      }
+      deltas.push(thisDelta);
+    }
+
+    if(transactions[i].date==cursor) {
+      balanceline='<tr style="background-color:lightblue"><td>'+cursor.substring(0,4)+'.'+cursor.substring(4,6)+'.'+cursor.substring(6,8)
+        +'</td><td>BALANCE:</td><td>'+balances.join('</td><td>')+'</td></tr>';
+    } else if(balanceline) {//will happen once after cursor date has just been passed, so will go just above cursor date:
+      str = balanceline+str;
+      balanceline=false;
+    }
+    str = '<tr><td>'+transactions[i].date.substring(0,4)+'.'+transactions[i].date.substring(4,6)+'.'+transactions[i].date.substring(6,8)+'</td><td>'+transactions[i].comment
+      +'</td><td>'+deltas.join('</td><td>')+'</td></tr>' + str;
+  }
+  endDay();
+  if(balanceline) {//will happen if cursor is highest occurring date
+    str = balanceline+str;
+  }
+  document.getElementById('thetable').innerHTML=
+    '<tr><td></td><td></td><td>'+participants.join('</td><td>')+'</td></tr>' + str;
+</script>
