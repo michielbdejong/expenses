@@ -13,18 +13,24 @@ var transactions = [];
     });
   }
 
-  function declaration(person, date, comment, euros) {
-    reportTransfer(person, 'pot', date, comment, euros, 'EUR');
+  function declaration(person, date, comment, euros, against) {
+    if(!against) {
+      against='pot';
+    }
+    reportTransfer(person, against, date, comment, euros, 'EUR');
   }
-  function bulkDeclaration(person, date, items) {
+  function bulkDeclaration(person, date, items, against) {
     for(var i in items) {
-      declaration(person, date, i, items[i]);
+      declaration(person, date, i, items[i], against);
     }
   }
   function transfer(from, to, date, euros) {
     reportTransfer(from, to, date, 'transfer', euros, 'EUR');
   }
-  function reportDonation(comment, euros, acceptor, date, donator) {
+  function reportDonation(comment, euros, acceptor, date, donator, against) {
+    if(!against) {
+      against='pot';
+    }
     reportTransfer(donator, acceptor, date, comment, euros, 'EUR');
-    reportTransfer('pot', donator, date, 'Thank you for your donation', euros, 'EUR');//donations don't establish credit, they are immediately paid off by saying thank you
+    reportTransfer(against, donator, date, 'Thank you for your donation', euros, 'EUR');//donations don't establish credit, they are immediately paid off by saying thank you
   }

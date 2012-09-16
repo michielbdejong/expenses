@@ -260,17 +260,17 @@
   transfer('jan', 'michiel', '2012/06/30', 100, 'EUR');//cash at 5hacks
   reportDonation('final payment from nlnet', 2700, 'jan', '2012/07/25', 'nlnet');
   declaration('hugo', '2012/06/30', 'internship June', 500);
-  declaration('hugo', '2012/06/04', 'co-up basic', 20);
-  declaration('hugo', '2012/07/04', 'co-up basic + 2 days', 20+2*12);
-  declaration('hugo', '2012/08/04', 'co-up basic', 20);
-  declaration('martin', '2012/06/04', 'co-up basic', 20);
+  declaration('hugo', '2012/06/04', 'co-up basic', 20, 'tosdr');
+  declaration('hugo', '2012/07/04', 'co-up basic + 2 days', 20+2*12, 'tosdr');
+  declaration('hugo', '2012/08/04', 'co-up basic', 20, 'tosdr');
+  declaration('martin', '2012/06/04', 'co-up basic', 20, 'tosdr');
 
   transfer('michiel', 'hugo', '2012/07/02', 556, 'EUR');
   transfer('michiel', 'martin', '2012/07/02', 20, 'EUR');
   
   declaration('hugo', '2012/07/31', 'internship July', 500);
   declaration('hugo', '2012/08/31', 'internship August', 500);
-  declaration('hugo', '2012/08/31', 'ticket Unhost (declaration against ToS;DR)', 180);
+  declaration('hugo', '2012/08/31', 'ticket Unhost (declaration against ToS;DR)', 180, 'tosdr');
   transfer('michiel', 'hugo', '2012/08/02', 520, 'EUR');
   transfer('michiel', 'hugo', '2012/08/31', 750, 'EUR');
   transfer('michiel', 'hugo', '2012/08/24', 5, 'EUR');//cash at dinner
@@ -279,7 +279,21 @@
   reportDonation('from paypal Aug 2012', 90.84-74.48, 'michiel', '2012/08/31', 'e.V.');
   declaration('michiel', '2012/08/20', 'OpenTabs T-shirt design', 100);
   declaration('michiel', '2012/09/01', 'remaining 12*170 eur for year 3', 2040);
-  reportTransfer('hugo', 'michiel', '2012/09/09', 'port to #peer tab', 67, 'EUR');
-  reportTransfer('jan', 'michiel', '2012/09/09', 'port to #peer tab', 32.76, 'EUR');
-  reportDonation('final donation', 65.99, 'michiel', '2012/09/09', 'michiel');
+  //reportDonation('final donation', 65.99, 'michiel', '2012/09/09', 'michiel');
+  reportDonation('tosdr flattr', 100, 'hugo', '2012/09/09', 'flattr', 'tosdr'); 
   
+  bulkDeclaration('jan', '2012/09/15', {
+    'remotestorage.io': 39
+  });
+  bulkDeclaration('michiel', '2012/09/15', {
+    'godaddy 29/8': 25.28,
+    'flight Zagreb': 31.05,
+    'rackspace 4/9': 27.65,
+    'godaddy 6/9': 60.64,
+    'godaddy 6/9': 5.74
+  });
+  declaration('michiel', '2012/09/15', 'contribution future rackspace/godaddy/travel costs', 89.29);
+  
+  reportTransfer('tosdr', 'michiel', '2012/09/15', 'port to #tosdr tab', 344.76, 'EUR');
+  reportTransfer('hugo', 'tosdr', '2012/09/15', 'port to #tosdr tab', 167, 'EUR');
+  reportTransfer('tosdr', 'jan', '2012/09/15', 'port to #tosdr tab', 6.24, 'EUR');
