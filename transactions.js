@@ -242,20 +242,25 @@
   });
   reportDonation('received from nlnet', 3000, 'jan', '2012/06/15', 'nlnet');
   bulkDeclaration('jan', '2012/06/30', {
+    'worked two months': 2000,
     'health insurance for April (May 15)': 221.15,
     'health insurance for May (June 15)': 221.15,
     '20 for 3 days co.up coworking space (June 5–7)': 20,
     '27.28 customs + 4.10 (2*2.05) train ride (for remoteStorage stickers, May 31)': 27.28,
     '52.97 for 1000 new Unhosted stickers': 52.97,
+    '2.97 (0.90+0.18+0.63+1.26) for calls to the tax office (June 6 & 7)': 2.97,
     '28.70 (14.35 * 2) yearly for unhost.it (year from 16.07.2011 & 16.07.2012)': 28.70,
     '14.35 docrastinate.com (year from 28.04.2012)': 14.35,
     '14.35 sharedstuff.org (year from 28.05.2012)': 14.35,
     '14.35 focalendar.com (year from 01.05.2012)': 14.35,
     '14.35 litewrite.net (year from 21.05.2012)': 14.35,
-    '2.97 (0.90+0.18+0.63+1.26) for calls to the tax office (June 6 & 7)': 2.97,
-    'worked two months': 2000,
-    'predicted declaration plane ticket Portland': 280,
-    'predicted payment 15 July: krankenkasse May': 221.15
+    '14.35 hookmark.it (year from 20.06.2012)': 14.35,
+    'plane ticket Portland': 281.80,
+    'registration OpenWebCamp.org': 8.14,
+    'bus fares OSBridge, IndieWebCamp': 12.26,
+    'public transport JS meetup': 5,
+    'remotestorage.io': 38.27,
+    '15 July: krankenkasse May': 224.44
   });
   transfer('jan', 'michiel', '2012/06/30', 100, 'EUR');//cash at 5hacks
   reportDonation('final payment from nlnet', 2700, 'jan', '2012/07/25', 'nlnet');
@@ -282,9 +287,6 @@
   //reportDonation('final donation', 65.99, 'michiel', '2012/09/09', 'michiel');
   reportDonation('tosdr flattr', 100, 'hugo', '2012/09/09', 'flattr', 'tosdr'); 
   
-  bulkDeclaration('jan', '2012/09/15', {
-    'remotestorage.io': 39
-  });
   bulkDeclaration('michiel', '2012/09/15', {
     'godaddy 29/8': 25.28,
     'flight Zagreb': 31.05,
@@ -292,8 +294,8 @@
     'godaddy 6/9': 60.64,
     'godaddy 6/9': 5.74
   });
-  declaration('michiel', '2012/09/15', 'contribution future rackspace/godaddy/travel costs', 89.29);
+  declaration('michiel', '2012/09/15', 'contribution future rackspace/godaddy/travel costs', 45.18);
   
-  reportTransfer('tosdr', 'michiel', '2012/09/15', 'port to #tosdr tab', 344.76, 'EUR');
+  reportTransfer('tosdr', 'michiel', '2012/09/15', 'port to #tosdr tab', 300.65, 'EUR');
   reportTransfer('hugo', 'tosdr', '2012/09/15', 'port to #tosdr tab', 167, 'EUR');
-  reportTransfer('tosdr', 'jan', '2012/09/15', 'port to #tosdr tab', 6.24, 'EUR');
+  reportTransfer('tosdr', 'jan', '2012/09/15', 'port to #tosdr tab', 50.35, 'EUR');
